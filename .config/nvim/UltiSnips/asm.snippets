@@ -1,0 +1,53 @@
+snippet func "Function" bA
+.type $1, @function
+$1:
+	push %ebp
+	movl %esp, %ebp
+
+	$0
+
+	movl %ebp,%esp
+	pop %ebp
+	ret
+endsnippet
+
+snippet irel "Relative Memory" A
+$4($1,$2,$3)
+endsnippet
+
+snippet rel "Relative Mem" A
+$2($1)
+endsnippet
+
+
+snippet eax "eax" iA
+%eax
+endsnippet
+
+snippet ebx "ebx" iA
+%ebx
+endsnippet
+
+snippet ecx "ecx" iA
+%ecx
+endsnippet
+
+snippet edx "edx" iA
+%edx
+endsnippet
+
+snippet esi "esi" iA
+%esi
+endsnippet
+
+snippet edi "edi" iA
+%edi
+endsnippet
+
+snippet esp "esp" iA
+%esp
+endsnippet
+
+snippet ebp "ebp" iA
+%ebp
+endsnippet
