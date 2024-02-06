@@ -1,13 +1,11 @@
 call plug#begin(stdpath("data") . "/plugged")
-
 	Plug 'SirVer/ultisnips'
 	Plug 'lervag/vimtex'
-
-	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " NerdTree (,tr)
-	Plug 'luochen1990/rainbow'				" Rainbow parantheses
-	Plug 'bling/vim-airline'				" airline
-	Plug 'vim-airline/vim-airline-themes'	" themes for airline
-	Plug 'majutsushi/tagbar'				" Programming tagbar (,tag)
+	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+	Plug 'luochen1990/rainbow'
+	Plug 'bling/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'majutsushi/tagbar'
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 	Plug 'dag/vim-fish'
 call plug#end()
@@ -27,28 +25,26 @@ let g:UltiSnipsJumpBackwardsTrigger="<S-Tab>"
 
 " == MAIN SETTINGS ============================================================
 syntax on
-filetype plugin on	" auto-detect file types
-filetype indent off    " auto-detect file types
-"filetype plugin indent off " auto-detect file types
-set t_Co=256				" display nicer colors in textmode, use 88 or 256
-set nocompatible			" no need for legacy vi
-set ttyfast					" always assume a fast TTY
-set nobackup				" don't use backups
-set noswapfile				" don't use swapfiles
-set modelines=3				" first 3 lines are parsed for modelines
-set history=1000			" set history lines
-set undolevels=1000			" set undo levels
-set path=./**,,				" recursively include CWD  to path (to use :find)
-set backspace=indent,eol,start "allow backspacing over everything
-set autowrite				" auto-save before 'make'
-set virtualedit=onemore		" we may set cursor to EOL+1
+filetype plugin on				" auto-detect file types
+filetype indent off				" auto-detect file types
+set t_Co=256					" display nicer colors in textmode, use 88 or 256
+set nocompatible				" no need for legacy vi
+set ttyfast						" always assume a fast TTY
+set nobackup					" don't use backups
+set noswapfile					" don't use swapfiles
+set modelines=3					" first 3 lines are parsed for modelines
+set history=1000				" set history lines
+set undolevels=1000				" set undo levels
+set path=./**,,					" recursively include CWD  to path (to use :find)
+set backspace=indent,eol,start	" allow backspacing over everything
+set autowrite					" auto-save before 'make'
+set virtualedit=onemore			" we may set cursor to EOL+1
+set hidden						" allow changing buffer without saving
+set wildmenu					" enhanced command-line completion mode
+set wildmode=list:longest		" wildmenu style
+set number						" always how real number of current line
+set clipboard+=unnamedplus		" always use clipboard
 set ssop=blank,buffers,folds,help,options,resize,sesdir,tabpages,unix,winpos,winsize
-set hidden					" unsure?
-set wildmenu				" enhanced command-line completion mode
-set wildmode=list:longest	" wildmenu style
-set number					" always how real number of current line
-set relativenumber			" use relative line numbering for other lines
-set clipboard+=unnamedplus	" always use clipboard
 
 
 " == BASIC VISUALS ===========================================================
@@ -56,7 +52,7 @@ set title					" change terminal's title
 set visualbell				" don't beep
 set noerrorbells			" suppress annoying bell on error
 set cursorline				" Highlight current line
-set colorcolumn=80			" column 80 is colored
+"set colorcolumn=80			" column 80 is colored
 
 
 " == WHITESPACE ===============================================================
@@ -71,7 +67,7 @@ set indentexpr=				" get rid of damn left-shifting of tex lines
 set nojoinspaces			" Don't put 2 spaces after [.!?] when joining lines
 set lbr						" Word wrap visually
 set wrapscan				" search wrap around EOF
-set wrap					"  wrap text by default
+set wrap					" wrap text by default
 
 " show invisible characters
 set list
@@ -83,9 +79,9 @@ set listchars+=eol:◃
 
 
 " == ENCODINGS ================================================================
-set termencoding=utf-8		" UTF-8 only
-set fileencodings=ucs-bom,utf-8,latin1 " encoding priority
-set fileformats=unix,dos	" line-end format, order of priority
+set termencoding=utf-8					" UTF-8 only
+set fileencodings=ucs-bom,utf-8,latin1	" encoding priority
+set fileformats=unix,dos				" line-end format, order of priority
 
 " == MOUSE/SCROLLING ==========================================================
 set mouse=a					" allow mouse in textmode
@@ -123,45 +119,56 @@ set formatoptions=qrnl1
 
 "== MAPLEADER & MAPPINGS ======================================================
 " Set the <leader> and define all shortcuts
-"  Note: Ending the map command with a pipe (|) and *no* space inbetween,
-"		allows us to add an inline comment in the same line without running
-"		into any troubles with the command itself.
-"		See https://stackoverflow.com/questions/24716804 for details
 "==============================================================================
-let mapleader = ","						" set <leader> to ','
-nnoremap <leader><space> :noh<cr>|		"  ', ' = no-highlight
-"nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>	" strip whitespaces in file
-nnoremap <leader>W :w !sudo tee % >/dev/null
-nnoremap <leader>a :Ack
-nnoremap <leader>R :so $MYVIMRC<CR>|	" reload vimrc (nvim: init.vim)
-nnoremap <leader>ft Vatzf|				" ft: fold tag
-vnoremap <leader>q gqip|				" q: hard-wrap current paragraph
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>| "^ split-open vimrc
-"nnoremap <leader>s <C-w>v<C-w>l		" s: vertical split with new content
-nnoremap <leader>v :vnew<cr>|			" vertical map with new buffer
-nnoremap <leader>s :new<cr>|			" horizontal map with new buffer
-nnoremap <leader>nt :tabnew<cr>|		" t: open and goto new tab
-nnoremap <leader>tr :NERDTreeToggle<cr>| " toggle filesystem tree
-nnoremap <leader>tag :TagbarToggle<cr>| " Toggle programming tagbar
-nnoremap <leader>p "+p|					" paste x11 clipboard
-nnoremap <leader>y "*y|					" copy to x11 clipboard
-nnoremap <leader>spe :setlocal spell! spelllang=en<cr>| " enable EN spelling
-nnoremap <leader>spg :setlocal spell! spelllang=de<cr>| " enable DE spelling
-nnoremap <leader>sne ]s|				" jump to next misspelled word
-nnoremap <leader>spr [s|				" jump to previous misspelled word
+" set <leader> to ','
+let mapleader = ","
 
-nnoremap <leader>add zg|				" add word under cursor to dictionary
-nnoremap <leader>hex :%!xxd<cr>|		" enable hex view
-nnoremap <leader>unhex :%!xxd -r<cr>|	" disable hex view
-nnoremap ' `|							" goto mark with lin+col w/o backtick
+"  : clear highlighted things
+nnoremap <leader><space> :noh<cr>
+
+" R: reload vimrc (nvim: init.vim)
+nnoremap <leader>R :so $MYVIMRC<CR>
+
+" ft: fold tag
+nnoremap <leader>ft Vatzf
+
+" q: hard-wrap current paragraph
+vnoremap <leader>q gqip
+
+" ev: split-open vimrc
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" v: vertical map with new buffer
+nnoremap <leader>v :vnew<cr>
+
+" s: horizontal map with new buffer
+nnoremap <leader>s :new<cr>
+
+" t: open and goto new tab
+nnoremap <leader>nt :tabnew<cr>
+
+" tr: toggle filesystem tree
+nnoremap <leader>tr :NERDTreeToggle<cr>
+
+" tag: toggle programming tagbar
+nnoremap <leader>tag :TagbarToggle<cr>
+
+" hex: enable hex view
+nnoremap <leader>hex :%!xxd<cr>
+
+" unhex: disable hex view
+nnoremap <leader>unhex :%!xxd -r<cr>
+
+
+nnoremap ' `|								" goto mark with lin+col w/o backtick
 
 tnoremap <Esc> <C-\><C-n>
-inoremap <F1> <ESC>|					" get rid of F1-help in all modes
+inoremap <F1> <ESC>|						" get rid of F1-help in all modes
 nnoremap <F1> <ESC>|
 vnoremap <F1> <ESC>|
 
-nnoremap / /\v|							" Fix vim's crazy regexes
-vnoremap / /\v|							" -||-
+nnoremap / /\v|								" Fix vim's crazy regexes
+vnoremap / /\v|								" -||-
 set pastetoggle=<F2>
 
 " Change tabs
@@ -245,10 +252,6 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 " don't check for whitespaces
 let g:airline#extensions#whitespace#enabled = 0
-
-
-" == DIRECT DOCUMENT SHORTCUTS ================================================
-command! Cheat :tabnew ~/.config/nvim/cheatsheet
 
 
 " == COLORS & STYLE ===========================================================
