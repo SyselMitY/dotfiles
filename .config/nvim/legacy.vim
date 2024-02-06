@@ -13,7 +13,6 @@ let g:UltiSnipsJumpBackwardsTrigger="<S-Tab>"
 set termguicolors
 
 " Clipboard
-
 let g:clipboard = {
 	\	'name': 'WslClipboard',
 	\	'copy': {
