@@ -1,0 +1,18 @@
+import = ["/home/emma/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
+
+[window]
+title = "Terminal"
+dynamic_title = true
+dynamic_padding = true
+
+[window.padding]
+x=0
+#y=15
+y=0
+
+[shell]
+program="/usr/bin/fish"
+
+[font]
+normal.family="JetBrainsMonoNL Nerd Font"
+normal.style="Regular"
