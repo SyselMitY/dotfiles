@@ -6,6 +6,10 @@ snippet "([\W_])OHM" "Ohm Symbol" rA
 `!p snip.rv = match.group(1)`\si{\ohm}
 endsnippet
 
+snippet "([\W_])KOHM" "kOhm Symbol" rA
+`!p snip.rv = match.group(1)`\si{k\ohm}
+endsnippet
+
 snippet "([\W_])DB" "\decibell" rA
 `!p snip.rv = match.group(1)`\decibell
 endsnippet
