@@ -1,35 +1,23 @@
-call plug#begin(stdpath("data") . "/plugged")
-	Plug 'SirVer/ultisnips'
-	Plug 'lervag/vimtex'
-	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-	Plug 'luochen1990/rainbow'
-	Plug 'bling/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'majutsushi/tagbar'
-	Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-	Plug 'dag/vim-fish'
-call plug#end()
-
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 
 let g:tagbar_type_att_asm = {
 	\ 'kinds' : [
 		\ 'l:label',
 	\ ],
 \ }
-
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="jk"
 let g:UltiSnipsJumpBackwardsTrigger="<S-Tab>"
-
+set termguicolors
 
 " == MAIN SETTINGS ============================================================
 syntax on
 filetype plugin on				" auto-detect file types
 filetype indent off				" auto-detect file types
-set t_Co=256					" display nicer colors in textmode, use 88 or 256
-set nocompatible				" no need for legacy vi
-set ttyfast						" always assume a fast TTY
+"set nocompatible				" no need for legacy vi
+"set ttyfast						" always assume a fast TTY
 set nobackup					" don't use backups
 set noswapfile					" don't use swapfiles
 set modelines=3					" first 3 lines are parsed for modelines
@@ -51,8 +39,6 @@ set ssop=blank,buffers,folds,help,options,resize,sesdir,tabpages,unix,winpos,win
 set title					" change terminal's title
 set visualbell				" don't beep
 set noerrorbells			" suppress annoying bell on error
-set cursorline				" Highlight current line
-"set colorcolumn=80			" column 80 is colored
 
 
 " == WHITESPACE ===============================================================
@@ -70,7 +56,7 @@ set wrapscan				" search wrap around EOF
 set wrap					" wrap text by default
 
 " show invisible characters
-set list
+"set list
 set listchars=tab:»·
 set listchars+=trail:·
 set listchars+=extends:>
@@ -148,7 +134,7 @@ nnoremap <leader>s :new<cr>
 nnoremap <leader>nt :tabnew<cr>
 
 " tr: toggle filesystem tree
-nnoremap <leader>tr :NERDTreeToggle<cr>
+nnoremap <leader>tr :NvimTreeToggle<cr>
 
 " tag: toggle programming tagbar
 nnoremap <leader>tag :TagbarToggle<cr>
@@ -177,96 +163,14 @@ nmap <C-l> :tabnext<cr>|
 imap <C-h> <C-o>:tabprevious<cr>|
 imap <C-l> <C-o>:tabnext<cr>|
 
-"= Hack: Make sure terminals with <256 colors are still readable
-if &t_Co <= 0
-	if &term =~ "xterm"
-		if has("terminfo")
-			set t_Co=8
-			set t_Sf=^[[3%p1%dm
-			set t_Sb=^[[4%p1%dm
-		else
-			set t_Co=8
-			set t_Sf=^[[3%dm
-			set t_Sb=^[[4%dm
-		endif
-	endif
-endif
-
-
 
 "==== CUSTOM PLUG-IN VARIABLE =================================================
 let g:tlTokenList = ['TODO', 'ToDo', 'fixme', 'FIXME', 'BORKEN', 'XXX', 'BROKEN']
 	" ^ Highlighting Token list
 
 
-" === AUTOCMDs ================================================================
-autocmd filetype html,xml set listchars-=tab:>.		" no <> on XML and friends
-" au FocusLost * :wa		" save contents on loosing focus
-
-
 "==== STATUSLINE & AIRLINE CONFIG =============================================
-set ruler					" always show line+column number
-set noshowmode				" mode is shown by airline, so don't show twice
-set laststatus=2			" always show status line
-set showcmd					" always show current command
-
-
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-
-"" unicode symbols
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.crypt = ''
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.paste = 'π'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.linenr = ''
-
-" Use short form of modes
-let g:airline_mode_map = {
-	\ '__' : '-',
-	\ 'n'  : 'N',
-	\ 'i'  : 'I',
-	\ 'R'  : 'R',
-	\ 'c'  : 'C',
-	\ 'v'  : 'V',
-	\ 'V'  : 'V',
-	\ '' : 'V',
-	\ 's'  : 'S',
-	\ 'S'  : 'S',
-	\ '' : 'S',
-	\ }
-
-function! AirlineInit()
-	" show hex+dec ASCII code of current character
-	let g:airline_section_y = airline#section#create(['ffenc',' [0x%B|%b]'])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
-
-" don't check for whitespaces
-let g:airline#extensions#whitespace#enabled = 0
-
-
-" == COLORS & STYLE ===========================================================
-" ***NOTE: they have no effect here - must be placed below colorscheme to work!
-" set colors for special characters and overlengthy lines
-highlight SpecialKey ctermfg=DarkBlue
-highlight NonText ctermfg=DarkRed
-highlight OverLength ctermbg=darkred guibg=#592929
-
-
-" == FINAL STATEMENT: LOAD COLORSCHEMES, etc ==================================
-let g:airline_theme = 'violet'
-set background=dark			" make comments more readable
-
-colorscheme "catppuccin-macchiato"
-
-
-highlight SpellBad ctermbg=DarkRed guibg=DarkRed
+"set ruler					" always show line+column number
+"set noshowmode				" mode is shown by airline, so don't show twice
+"set laststatus=2			" always show status line
+"set showcmd					" always show current command

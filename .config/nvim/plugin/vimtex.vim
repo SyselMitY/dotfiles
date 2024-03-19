@@ -16,7 +16,7 @@ function! s:TexFocusVim() abort
 	redraw!
 endfunction
 
-augroup vimtex_event_focus
-	au!
-	au User VimtexEventView call s:TexFocusVim()
-augroup END
+"augroup vimtex_event_focus
+"	au!
+"	au User VimtexEventView call s:TexFocusVim()
+"augroup END
