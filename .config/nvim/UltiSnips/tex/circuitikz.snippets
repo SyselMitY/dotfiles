@@ -1,0 +1,47 @@
+global !p
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    return x != '0' and x != '0'
+endglobal
+
+context "env('circuitikz')"
+snippet dr "Begin draw call" A
+\draw (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet s "Short" A
+to[short] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet vv "Voltage source" A
+to[V, v=${3:\$ U_E \$}] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet r "Resistor" A
+to[R=${3:\$ R_1 \$}] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet led "LED" A
+to[leDo] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet vm "Voltmeter" A
+to[rmeterwa, t=V, label=${3:\$ U_1 \$}] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
+snippet am "Ampmeter" A
+to[rmeterwa, t=A, label=${3:\$ U_1 \$}] (${1:0},${2:0})
+$0
+endsnippet
