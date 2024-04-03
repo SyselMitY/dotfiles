@@ -56,7 +56,7 @@ set wrapscan				" search wrap around EOF
 set wrap					" wrap text by default
 
 " show invisible characters
-"set list
+set list
 set listchars=tab:»·
 set listchars+=trail:·
 set listchars+=extends:>

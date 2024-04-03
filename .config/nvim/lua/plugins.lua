@@ -27,3 +27,9 @@ require("nvim-tree").setup({})
 require("bufferline").setup({
 	highlights = require("catppuccin.groups.integrations.bufferline").get()
 })
+
+local ctp_feline = require("catppuccin.groups.integrations.feline")
+require("feline").setup({
+	components = ctp_feline.get(),
+})
+
