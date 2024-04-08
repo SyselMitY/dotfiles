@@ -123,3 +123,14 @@ snippet tls "\textls[]{}" i
 endsnippet
 # --------------------------------------------- #
 # END SPACING SNIPPETS
+
+
+snippet graphic "Include Graphic" 
+\begin{figure}[${1:h}]
+	\begin{center}
+		\includegraphics[width=${2:0.6}\textwidth]{$3}
+		\caption{$4}
+	\end{center}
+\end{figure}
+endsnippet
+

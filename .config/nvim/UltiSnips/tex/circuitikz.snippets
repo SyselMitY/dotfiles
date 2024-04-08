@@ -23,6 +23,12 @@ $0
 endsnippet
 
 context "env('circuitikz')"
+snippet vsv "Voltage sine source" A
+to[sV, v=${3:\$ U_E \$}] (${1:0},${2:0})
+$0
+endsnippet
+
+context "env('circuitikz')"
 snippet r "Resistor" A
 to[R=${3:\$ R_1 \$}] (${1:0},${2:0})
 $0
@@ -45,3 +51,9 @@ snippet am "Ampmeter" A
 to[rmeterwa, t=A, label=${3:\$ U_1 \$}] (${1:0},${2:0})
 $0
 endsnippet
+
+snippet c "Capacitor" A
+to[C=${3:\$ C_1 \$}] (${1:0},${2:0})
+$0
+endsnippet
+
