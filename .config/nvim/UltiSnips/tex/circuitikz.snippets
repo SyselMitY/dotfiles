@@ -6,9 +6,15 @@ endglobal
 
 context "env('circuitikz')"
 snippet dr "Begin draw call" A
-\draw (${1:0},${2:0})
+\draw $1
 $0
 endsnippet
+
+context "env('circuitikz')"
+snippet ( "Coords" A
+(${1:0,0})$0
+endsnippet
+
 
 context "env('circuitikz')"
 snippet s "Short" A
@@ -52,6 +58,7 @@ to[rmeterwa, t=A, label=${3:\$ U_1 \$}] (${1:0},${2:0})
 $0
 endsnippet
 
+context "env('circuitikz')"
 snippet c "Capacitor" A
 to[C=${3:\$ C_1 \$}] (${1:0},${2:0})
 $0
