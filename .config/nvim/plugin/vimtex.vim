@@ -16,6 +16,7 @@ function! s:TexFocusVim() abort
 	redraw!
 endfunction
 
+set conceallevel=2 
 "augroup vimtex_event_focus
 "	au!
 "	au User VimtexEventView call s:TexFocusVim()

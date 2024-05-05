@@ -11,6 +11,18 @@ vim.call("plug#begin")
 	Plug("nvim-tree/nvim-tree.lua")
 	Plug("akinsho/bufferline.nvim", {["tag"] = "*"})
 	Plug("freddiehaddad/feline.nvim")
+
+	Plug("hrsh7th/cmp-nvim-lsp")
+	Plug("hrsh7th/cmp-buffer")
+	Plug("hrsh7th/cmp-path")
+	Plug("hrsh7th/cmp-cmdline")
+	Plug("hrsh7th/nvim-cmp")
+	Plug("neovim/nvim-lspconfig")
+
+	Plug("quangnguyen30192/cmp-nvim-ultisnips")
+	Plug("micangl/cmp-vimtex")
+
+	Plug("HakonHarnes/img-clip.nvim")
 vim.call("plug#end")
 
 require("catppuccin").setup({
@@ -32,4 +44,5 @@ local ctp_feline = require("catppuccin.groups.integrations.feline")
 require("feline").setup({
 	components = ctp_feline.get(),
 })
+
 
