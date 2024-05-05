@@ -16,6 +16,10 @@ snippet "(^|[^a-zA-Z])ul" "\underline{} (underline)" r
 `!p snip.rv = match.group(1)`\underline{${1:${VISUAL:}}}$0
 endsnippet
 
+snippet "(^|[^a-zA-Z])ol" "\overline{} (overline)" r
+`!p snip.rv = match.group(1)`\overline{${1:${VISUAL:}}}$0
+endsnippet
+
 snippet "(^|[^a-zA-Z])tee" "\text{} (math environment)" rA
 `!p snip.rv = match.group(1)`\text{${1:${VISUAL:}}}$0
 endsnippet
