@@ -1,11 +1,15 @@
 # Greek letters
 
-snippet oe "Ö fix"
-ö
+#snippet "(^|[^a-zA-Z\\])mm" "Inline math $ $" rA
+#`!p snip.rv = match.group(1)`\$ ${1:${VISUAL:}} \$$0
+#endsnippet
+
+snippet "oe(\w+)?" "Ö fix" ri
+ö`!p snip.rv = match.group(1)` $0
 endsnippet
 
-snippet OE "Ö fix caps"
-Ö
+snippet "Oe(\w+)?" "Ö fix caps" ri
+Ö`!p snip.rv = match.group(1)` $0
 endsnippet
 
 
