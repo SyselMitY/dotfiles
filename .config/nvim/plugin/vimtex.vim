@@ -1,5 +1,6 @@
 let g:vimtex_view_method = "zathura"
 
+
 " Get Vim's window ID for switching focus from Zathura to Vim using xdotool.
 " Only set this variable once for the current Vim instance.
 if !exists("g:vim_window_id")

@@ -63,12 +63,6 @@ set listchars+=extends:>
 set listchars+=precedes:<
 set listchars+=eol:◃
 
-
-" == ENCODINGS ================================================================
-set termencoding=utf-8					" UTF-8 only
-set fileencodings=ucs-bom,utf-8,latin1	" encoding priority
-set fileformats=unix,dos				" line-end format, order of priority
-
 " == MOUSE/SCROLLING ==========================================================
 set mouse=a					" allow mouse in textmode
 set mousehide				" hide mousepointer during typing
@@ -155,7 +149,6 @@ vnoremap <F1> <ESC>|
 
 nnoremap / /\v|								" Fix vim's crazy regexes
 vnoremap / /\v|								" -||-
-set pastetoggle=<F2>
 
 " Change tabs
 nmap <C-h> :tabprevious<cr>|
@@ -167,7 +160,6 @@ imap <C-l> <C-o>:tabnext<cr>|
 "==== CUSTOM PLUG-IN VARIABLE =================================================
 let g:tlTokenList = ['TODO', 'ToDo', 'fixme', 'FIXME', 'BORKEN', 'XXX', 'BROKEN']
 	" ^ Highlighting Token list
-
 
 "==== STATUSLINE & AIRLINE CONFIG =============================================
 "set ruler					" always show line+column number

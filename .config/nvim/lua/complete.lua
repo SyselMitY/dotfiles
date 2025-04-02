@@ -1,9 +1,9 @@
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			 vim.fn["UltiSnips#Anon"](args.body)
+			vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
 	window = {
@@ -11,6 +11,8 @@ cmp.setup({
 		-- documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
+		["<C-J>"] = cmp.mapping.select_next_item(),
+		["<C-K>"] = cmp.mapping.select_prev_item(),
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
@@ -20,7 +22,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'ultisnips' },
-		{ name = "vimtex"},
+		{ name = "vimtex" },
 	}, {
 		{ name = 'buffer' },
 	})
@@ -53,10 +55,3 @@ cmp.setup.cmdline(':', {
 	}),
 	matching = { disallow_symbol_nonprefix_matching = false }
 })
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
--- 	capabilities = capabilities
--- }
