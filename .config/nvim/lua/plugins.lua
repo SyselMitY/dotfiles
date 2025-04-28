@@ -27,7 +27,7 @@ Plug("hrsh7th/cmp-cmdline")
 --	Plug("hrsh7th/nvim-cmp")
 Plug("hrsh7th/nvim-cmp", { ["commit"] = "b356f2c" })
 Plug("neovim/nvim-lspconfig")
-
+Plug("windwp/nvim-ts-autotag")
 Plug("folke/which-key.nvim")
 Plug("JASONews/glow-hover")
 
@@ -36,6 +36,8 @@ Plug("micangl/cmp-vimtex")
 
 Plug("HakonHarnes/img-clip.nvim")
 vim.call("plug#end")
+
+require("nvim-ts-autotag").setup({})
 
 require("catppuccin").setup({
 	flavour = "macchiato",
@@ -61,8 +63,7 @@ require("img-clip").setup({
 	default = {
 		relative_to_current_file = true
 	}
-}
-)
+})
 
 require("mason").setup()
 
@@ -70,6 +71,8 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"tinymist",
 		"lua_ls",
+		"pyright",
+		"html"
 	}
 })
 
@@ -91,6 +94,17 @@ require("lspconfig").dartls.setup {
 require("lspconfig").lua_ls.setup {
 	capabilities = capabilities
 }
+
+require("lspconfig").pyright.setup {}
+
+-- vim.lsp.config("html", {
+	-- capabilities = capabilities
+	-- })
+-- vim.lsp.enable("html")
+
+require("lspconfig").html.setup{
+	capabilities = capabilities
+	}
 
 require("which-key").setup {}
 

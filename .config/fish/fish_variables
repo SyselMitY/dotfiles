@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:nvim
 SETUVAR --export --path PYTHONPATH:\x1e/opt/resolve/Developer/Scripting/Modules/
 SETUVAR --export RESOLVE_SCRIPT_API:/opt/resolve/Developer/Scripting
 SETUVAR --export RESOLVE_SCRIPT_LIB:/opt/resolve/libs/Fusion/fusionscript\x2eso
