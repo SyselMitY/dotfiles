@@ -12,6 +12,7 @@ Plug("neovim/nvim-lspconfig")
 Plug("williamboman/mason-lspconfig.nvim")
 Plug("lukas-reineke/lsp-format.nvim")
 
+Plug("nvim-treesitter/nvim-treesitter", {["do"] = ":TSUpdate"})
 Plug("majutsushi/tagbar")
 Plug("catppuccin/nvim", { ["as"] = "catppuccin" })
 Plug("dag/vim-fish")
