@@ -1,6 +1,6 @@
 function fish_greeting
     if not set -q fish_greeting
-        set -l line1 (printf (_ 'Hello %s%s%s.') (set_color $fish_user_color) $USER (set_color normal))
+        set -l line1 (printf (_ 'Hello %s%s%s.') (set_color $fish_color_user) $USER (set_color normal))
         set -g fish_greeting "$line1"
     end
 
