@@ -124,9 +124,6 @@ nnoremap <leader>v :vnew<cr>
 " s: horizontal map with new buffer
 nnoremap <leader>s :new<cr>
 
-" t: open and goto new tab
-nnoremap <leader>nt :tabnew<cr>
-
 " tr: toggle filesystem tree
 nnoremap <leader>tr :NvimTreeToggle<cr>
 
@@ -151,11 +148,6 @@ nnoremap / /\v|								" Fix vim's crazy regexes
 vnoremap / /\v|								" -||-
 
 " Change tabs
-nmap <C-h> :tabprevious<cr>|
-nmap <C-l> :tabnext<cr>|
-imap <C-h> <C-o>:tabprevious<cr>|
-imap <C-l> <C-o>:tabnext<cr>|
-
 
 "==== CUSTOM PLUG-IN VARIABLE =================================================
 let g:tlTokenList = ['TODO', 'ToDo', 'fixme', 'FIXME', 'BORKEN', 'XXX', 'BROKEN']

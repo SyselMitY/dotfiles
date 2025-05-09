@@ -35,6 +35,8 @@ Plug("JASONews/glow-hover")
 Plug("quangnguyen30192/cmp-nvim-ultisnips")
 Plug("micangl/cmp-vimtex")
 
+Plug("kaarmu/typst.vim")
+
 Plug("HakonHarnes/img-clip.nvim")
 vim.call("plug#end")
 
@@ -130,6 +132,8 @@ end
 -- opts and _opts aren't the same
 vim.keymap.set("n", "K", bordered_hover, opts)
 vim.keymap.set("i", "<C-s>", bordered_signature_help, opts)
+
+vim.g.typst_conceal = 1
 
 --vim.api.nvim_create_autocmd("LspAttach", {
 --	group = vim.api.nvim_create_augroup("my.lsp", {}),

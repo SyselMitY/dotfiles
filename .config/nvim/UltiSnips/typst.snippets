@@ -1,3 +1,8 @@
+global !p
+def math():
+	return vim.eval('typst#in_math()') == '1'
+endglobal
+
 snippet "(^|[^a-zA-Z\\])mm" "Inline math $ $" rA
 `!p snip.rv = match.group(1)`\$${1:${VISUAL:}}\$$0
 endsnippet
@@ -8,3 +13,64 @@ $
 $
 $0
 endsnippet
+
+context "math()"
+snippet "([\w]|[\}\)\]\|'"])ä" "Superscript" rA
+`!p snip.rv = match.group(1)`^(${1:${VISUAL:}})$0
+endsnippet
+
+context "math()"
+snippet "([a-zA-Z]|[\}\)\]\|'"])ö" "Subscript" rA
+`!p snip.rv = match.group(1)`_(${1:${VISUAL:}})$0
+endsnippet
+
+context "math()"
+snippet "([\w]|[\}\)\]\|'])"([\w]{1})" "Place the first \w character after the quotation mark in a subscript" rA
+`!p snip.rv = match.group(1) + "^(" + match.group(2) + ")"`
+endsnippet
+
+context "math()"
+snippet "([\w]|[\}\)\]\|']):([\w]{1})" "Place the first \w character after the : in a subscript" rA
+`!p snip.rv = match.group(1) + "_(" + match.group(2) + ")"`
+endsnippet
+
+snippet "([a-zA-Z]|[\}\)\]\|'])00" "Automatic 0 subscript" rA
+`!p snip.rv = match.group(1)`_0
+endsnippet
+
+context "math()"
+snippet "([^a-zA-Z])ee" "e^{} supercript" rA
+`!p snip.rv = match.group(1)`e^(${1:${VISUAL:}})$0
+endsnippet
+
+context "math()"
+snippet "([\w]|[\}\)\]\|'])([-+]{2})" "Automatic +/- subscript" rA
+`!p snip.rv = match.group(1) + "_(" + match.group(2)[0] + ")"`
+endsnippet
+
+snippet "([\w]|[\}\)\]\|'])\*\*" "Automatic * superscript" rA
+`!p snip.rv = match.group(1)`^*
+endsnippet
+
+snippet "(^|[^a-zA-Z])ff" "New Fraction" rA
+`!p snip.rv = match.group(1)`(${1:${VISUAL:}})/($2)$0
+endsnippet
+
+priority 3
+snippet " ([^( \n]+)ff" "Only Dividend Fraction" rA
+`!p snip.rv = "(" + match.group(1) + ")/"`(${1:${VISUAL:}})$0
+endsnippet
+
+priority 2
+snippet "([^\w\\])intt" "Integral with upper and lower limit" rA
+`!p snip.rv = match.group(1)`integral_($1)^($2) $0
+endsnippet
+
+snippet "([^\w\\])innt" "Integral with symmetric upper and lower limit" rA
+`!p snip.rv = match.group(1)`integral_(-$1)^($1) $0
+endsnippet
+
+snippet "([^\w\\])iint" "Infinity integral" rA
+`!p snip.rv = match.group(1)`integral_(-infinity)^(infinity)
+endsnippet
+
