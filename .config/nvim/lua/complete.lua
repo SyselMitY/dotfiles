@@ -1,4 +1,6 @@
+local vim = vim
 local cmp = require 'cmp'
+local compare = cmp.config.compare
 
 cmp.setup({
 	snippet = {
@@ -17,15 +19,24 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
+		{ name = "jupynium", priority = 1000 },
+		{ name = 'nvim_lsp', priority = 100},
 		{ name = 'ultisnips' },
 		{ name = "vimtex" },
 	}, {
 		{ name = 'buffer' },
-	})
+	}),
+  sorting = {
+    priority_weight = 1.0,
+    comparators = {
+      compare.score,            -- Jupyter kernel completion shows prior to LSP
+      compare.recently_used,
+      compare.locality,
+    },
+  },
 })
 
 -- Set configuration for specific filetype.

@@ -32,6 +32,10 @@ Plug("windwp/nvim-ts-autotag")
 Plug("folke/which-key.nvim")
 Plug("JASONews/glow-hover")
 
+Plug("kiyoon/jupynium.nvim", {["do"] = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python"})
+Plug("rcarriga/nvim-notify")
+Plug("stevearc/dressing.nvim")
+
 Plug("quangnguyen30192/cmp-nvim-ultisnips")
 Plug("micangl/cmp-vimtex")
 
@@ -65,6 +69,12 @@ require("feline").setup({
 require("img-clip").setup({
 	default = {
 		relative_to_current_file = true
+	}
+})
+
+require("jupynium").setup({
+	auto_start_sync = {
+		enable = true
 	}
 })
 

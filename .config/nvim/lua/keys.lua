@@ -1,3 +1,4 @@
+local vim = vim
 local map = vim.keymap
 map.set("n","<C-Tab>","<cmd>bn<cr>")
 map.set("n","<C-S-Tab>","<cmd>bp<cr>")
