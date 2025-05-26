@@ -1,4 +1,5 @@
 require("plugins")
+require("lsp")
 require("base")
 require("keys")
 require("complete")

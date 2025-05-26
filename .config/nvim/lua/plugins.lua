@@ -2,46 +2,56 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
+
+-- Utils
 Plug("SirVer/ultisnips")
-Plug("lervag/vimtex")
-Plug("rust-lang/rust.vim")
+Plug("mfussenegger/nvim-dap")
+Plug("dag/vim-fish")
+Plug("folke/which-key.nvim")
 
-Plug("chomosuke/typst-preview.nvim")
-Plug("williamboman/mason.nvim")
-Plug("neovim/nvim-lspconfig")
-Plug("williamboman/mason-lspconfig.nvim")
-Plug("lukas-reineke/lsp-format.nvim")
-
-Plug("nvim-treesitter/nvim-treesitter", {["do"] = ":TSUpdate"})
+-- Looks
 Plug("majutsushi/tagbar")
 Plug("catppuccin/nvim", { ["as"] = "catppuccin" })
-Plug("dag/vim-fish")
 Plug("nvim-tree/nvim-web-devicons")
 Plug("nvim-tree/nvim-tree.lua")
 Plug("akinsho/bufferline.nvim", { ["tag"] = "*" })
-Plug("freddiehaddad/feline.nvim")
+--Plug("freddiehaddad/feline.nvim")
+Plug("nvim-lualine/lualine.nvim")
+Plug("JASONews/glow-hover")
+Plug("rcarriga/nvim-notify")
+Plug("stevearc/dressing.nvim")
 
+-- Autocomplete
 Plug("hrsh7th/cmp-nvim-lsp")
 Plug("hrsh7th/cmp-buffer")
 Plug("hrsh7th/cmp-path")
 Plug("hrsh7th/cmp-cmdline")
---	Plug("hrsh7th/nvim-cmp")
-Plug("hrsh7th/nvim-cmp", { ["commit"] = "b356f2c" })
-Plug("neovim/nvim-lspconfig")
-Plug("windwp/nvim-ts-autotag")
-Plug("folke/which-key.nvim")
-Plug("JASONews/glow-hover")
-
-Plug("kiyoon/jupynium.nvim", {["do"] = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python"})
-Plug("rcarriga/nvim-notify")
-Plug("stevearc/dressing.nvim")
-
 Plug("quangnguyen30192/cmp-nvim-ultisnips")
 Plug("micangl/cmp-vimtex")
+Plug("hrsh7th/nvim-cmp")
+-- Plug("hrsh7th/nvim-cmp", { ["commit"] = "b356f2c" })
 
+-- Language Utils
+Plug("nvim-treesitter/nvim-treesitter", {["do"] = ":TSUpdate"})
+Plug("windwp/nvim-ts-autotag")
+Plug("HakonHarnes/img-clip.nvim")
+
+-- LSP
+Plug("mason-org/mason.nvim")
+Plug("neovim/nvim-lspconfig")
+Plug("mason-org/mason-lspconfig.nvim")
+Plug("lukas-reineke/lsp-format.nvim")
+
+-- Languages
+Plug("mrcjkb/rustaceanvim")
+
+Plug("chomosuke/typst-preview.nvim")
 Plug("kaarmu/typst.vim")
 
-Plug("HakonHarnes/img-clip.nvim")
+Plug("kiyoon/jupynium.nvim", {["do"] = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python"})
+
+Plug("lervag/vimtex")
+
 vim.call("plug#end")
 
 require("nvim-ts-autotag").setup({})
@@ -51,6 +61,7 @@ require("catppuccin").setup({
 	integrations = {
 		nvimtree = true,
 		treesitter = true,
+		mason = true
 	}
 })
 
@@ -61,10 +72,16 @@ require("bufferline").setup({
 	highlights = require("catppuccin.groups.integrations.bufferline").get()
 })
 
-local ctp_feline = require("catppuccin.groups.integrations.feline")
-require("feline").setup({
-	components = ctp_feline.get(),
+require("lualine").setup({
+	options = {
+		theme = "catppuccin"
+	}
 })
+
+-- local ctp_feline = require("catppuccin.groups.integrations.feline")
+-- require("feline").setup({
+--	components = ctp_feline.get(),
+--})
 
 require("img-clip").setup({
 	default = {
@@ -78,50 +95,11 @@ require("jupynium").setup({
 	}
 })
 
-require("mason").setup()
-
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"tinymist",
-		"lua_ls",
-		"pyright",
-		"html"
-	}
-})
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-require("lspconfig")["tinymist"].setup {
-	settings = {
-		formatterMode = "typstyle",
-		exportPdf = "onType",
-		semanticTokens = "enable"
-	},
-	capabilities = capabilities,
-	on_attach = require("lsp-format").on_attach
-}
-
-require("lspconfig").dartls.setup {
-	capabilities = capabilities
-}
-require("lspconfig").lua_ls.setup {
-	capabilities = capabilities
-}
-
-require("lspconfig").pyright.setup {}
-
--- vim.lsp.config("html", {
-	-- capabilities = capabilities
-	-- })
--- vim.lsp.enable("html")
-
-require("lspconfig").html.setup{
-	capabilities = capabilities
-	}
-
 require("which-key").setup {}
 
 require("glow-hover").setup {}
+
+vim.o.winborder = "rounded"
 
 local _border = "rounded"
 
@@ -140,25 +118,5 @@ local function bordered_signature_help(_opts)
 end
 
 -- opts and _opts aren't the same
-vim.keymap.set("n", "K", bordered_hover, opts)
-vim.keymap.set("i", "<C-s>", bordered_signature_help, opts)
-
-vim.g.typst_conceal = 1
-
---vim.api.nvim_create_autocmd("LspAttach", {
---	group = vim.api.nvim_create_augroup("my.lsp", {}),
---	callback = function(args)
---		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
---		if client:supports_method("textDocument/formatting")
---		--and not client:supports_method("textDocument/willSaveWaitUntil")
---		then
---			vim.api.nvim_create_autocmd("BufWritePre", {
---				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
---				buffer = args.buf,
---				callback = function()
---					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
---				end
---			})
---		end
---	end,
---})
+--vim.keymap.set("n", "K", bordered_hover, opts)
+--vim.keymap.set("i", "<C-s>", bordered_signature_help, opts)

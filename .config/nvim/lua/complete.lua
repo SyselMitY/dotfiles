@@ -1,4 +1,3 @@
-local vim = vim
 local cmp = require 'cmp'
 local compare = cmp.config.compare
 
