@@ -8,6 +8,7 @@ Plug("SirVer/ultisnips")
 Plug("mfussenegger/nvim-dap")
 Plug("dag/vim-fish")
 Plug("folke/which-key.nvim")
+Plug("lambdalisue/vim-suda")
 
 -- Looks
 Plug("majutsushi/tagbar")
@@ -44,6 +45,7 @@ Plug("lukas-reineke/lsp-format.nvim")
 
 -- Languages
 Plug("mrcjkb/rustaceanvim")
+Plug("isobit/vim-caddyfile")
 
 Plug("chomosuke/typst-preview.nvim")
 Plug("kaarmu/typst.vim")

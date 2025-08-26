@@ -1,5 +1,5 @@
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+"let g:loaded_netrw = 1
+"let g:loaded_netrwPlugin = 1
 
 let g:tagbar_type_att_asm = {
 	\ 'kinds' : [
@@ -16,7 +16,7 @@ set termguicolors
 syntax on
 filetype plugin on				" auto-detect file types
 filetype indent off				" auto-detect file types
-"set nocompatible				" no need for legacy vi
+set nocompatible				" no need for legacy vi
 "set ttyfast						" always assume a fast TTY
 set nobackup					" don't use backups
 set noswapfile					" don't use swapfiles
