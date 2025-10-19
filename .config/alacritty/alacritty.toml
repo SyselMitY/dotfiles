@@ -1,4 +1,5 @@
-import = ["/home/emma/.config/alacritty/catppuccin/catppuccin-macchiato.toml"]
+[general]
+	import = ["/home/emma/.config/alacritty/catppuccin-macchiato.toml"]
 
 [window]
 title = "Terminal"
@@ -10,9 +11,11 @@ x=0
 #y=15
 y=0
 
-[shell]
+[terminal.shell]
 program="/usr/bin/fish"
 
 [font]
 normal.family="JetBrainsMonoNL Nerd Font"
 normal.style="Regular"
+
+[terminal]

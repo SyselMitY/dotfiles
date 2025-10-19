@@ -71,7 +71,7 @@ vim.cmd.colorscheme "catppuccin"
 
 require("nvim-tree").setup({})
 require("bufferline").setup({
-	highlights = require("catppuccin.groups.integrations.bufferline").get()
+	highlights = require("catppuccin.special.bufferline").get_theme()
 })
 
 require("lualine").setup({
