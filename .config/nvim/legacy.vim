@@ -13,9 +13,6 @@ let g:UltiSnipsJumpBackwardsTrigger="<S-Tab>"
 set termguicolors
 
 " == MAIN SETTINGS ============================================================
-syntax on
-filetype plugin on				" auto-detect file types
-filetype indent off				" auto-detect file types
 set nocompatible				" no need for legacy vi
 "set ttyfast						" always assume a fast TTY
 set nobackup					" don't use backups
@@ -106,9 +103,6 @@ let mapleader = ","
 "  : clear highlighted things
 nnoremap <leader><space> :noh<cr>
 
-" R: reload vimrc (nvim: init.vim)
-nnoremap <leader>R :so $MYVIMRC<CR>
-
 " ft: fold tag
 nnoremap <leader>ft Vatzf
 
@@ -147,14 +141,6 @@ vnoremap <F1> <ESC>|
 nnoremap / /\v|								" Fix vim's crazy regexes
 vnoremap / /\v|								" -||-
 
-" Change tabs
-
 "==== CUSTOM PLUG-IN VARIABLE =================================================
 let g:tlTokenList = ['TODO', 'ToDo', 'fixme', 'FIXME', 'BORKEN', 'XXX', 'BROKEN']
 	" ^ Highlighting Token list
-
-"==== STATUSLINE & AIRLINE CONFIG =============================================
-"set ruler					" always show line+column number
-"set noshowmode				" mode is shown by airline, so don't show twice
-"set laststatus=2			" always show status line
-"set showcmd					" always show current command

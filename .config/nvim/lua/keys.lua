@@ -7,3 +7,5 @@ map.set("n","<space>e",vim.diagnostic.open_float,
 
 map.set("n","<C-l>","<cmd>bn<cr>")
 map.set("n","<C-h>","<cmd>bp<cr>")
+map.set("n","<Leader>p","<cmd>PasteImage<cr>")
+

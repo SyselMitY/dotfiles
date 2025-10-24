@@ -1,9 +1,10 @@
 local vim = vim;
 
-vim.opt.runtimepath:prepend("~/.local/share/nvim/treesitter-parsers/")
+vim.cmd("syntax on")
+vim.cmd("filetype plugin on")
+vim.cmd("filetype indent off")
 
 require("nvim-treesitter.configs").setup {
-    parser_install_dir = "~/.local/share/nvim/treesitter-parsers/",
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false

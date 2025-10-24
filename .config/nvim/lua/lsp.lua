@@ -6,6 +6,7 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"pyright",
 		"html",
+		"jdtls"
 	}
 })
 
@@ -13,8 +14,5 @@ require("lsp-format").setup()
 
 -- Rust is enabled by rustaceanvim plugin automatically
 vim.lsp.enable({
-	"tinymist",
 	"dartls",
-	"pyright",
-	"html",
 })

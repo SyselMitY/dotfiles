@@ -33,7 +33,7 @@ Plug("hrsh7th/nvim-cmp")
 -- Plug("hrsh7th/nvim-cmp", { ["commit"] = "b356f2c" })
 
 -- Language Utils
-Plug("nvim-treesitter/nvim-treesitter", {["do"] = ":TSUpdate"})
+Plug("nvim-treesitter/nvim-treesitter")--, {["do"] = ":TSUpdate"})
 Plug("windwp/nvim-ts-autotag")
 Plug("HakonHarnes/img-clip.nvim")
 
@@ -102,23 +102,3 @@ require("which-key").setup {}
 require("glow-hover").setup {}
 
 vim.o.winborder = "rounded"
-
-local _border = "rounded"
-
-local function bordered_hover(_opts)
-	_opts = _opts or {}
-	return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
-		border = _border
-	}))
-end
-
-local function bordered_signature_help(_opts)
-	_opts = _opts or {}
-	return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
-		border = _border
-	}))
-end
-
--- opts and _opts aren't the same
---vim.keymap.set("n", "K", bordered_hover, opts)
---vim.keymap.set("i", "<C-s>", bordered_signature_help, opts)
