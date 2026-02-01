@@ -6,7 +6,8 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"pyright",
 		"html",
-		"jdtls"
+		"jdtls",
+		"swift_mesonls"
 	}
 })
 

@@ -1,6 +1,10 @@
 local cmp = require 'cmp'
 local compare = cmp.config.compare
 
+require("cmp_nvim_ultisnips").setup {
+	filetype_source = "ultisnips_default"
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
