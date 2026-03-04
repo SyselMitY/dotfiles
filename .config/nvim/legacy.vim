@@ -59,6 +59,7 @@ set listchars+=trail:·
 set listchars+=extends:>
 set listchars+=precedes:<
 set listchars+=eol:◃
+set listchars+=nbsp:‣
 
 " == MOUSE/SCROLLING ==========================================================
 set mouse=a					" allow mouse in textmode
